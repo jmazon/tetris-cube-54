@@ -1,7 +1,4 @@
-flags: {}
-extra-package-dbs: []
+resolver: lts-18.1
 packages:
 - .
-extra-deps:
-- mtl-2.2.1
-resolver: ghc-8.2
+
