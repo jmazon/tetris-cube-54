@@ -1,0 +1,19 @@
+name:                tetris-cube
+version:             0.1.0.0
+-- synopsis:            
+-- description:         
+license:             AllRightsReserved
+license-file:        LICENSE
+author:              Jean-Baptiste Mazon
+maintainer:          jb@yavin
+-- copyright:           
+category:            Game
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+executable tetris-cube
+  main-is: tetris-cube.hs
+  build-depends: base, clock, containers, linear, lens
+  default-language: Haskell2010
+  ghc-options: -rtsopts
