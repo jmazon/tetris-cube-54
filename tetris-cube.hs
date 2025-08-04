@@ -5,11 +5,8 @@ import           Data.List       (foldl',nub,sort)
 import           Data.Map.Strict (Map)
 import qualified Data.Map.Strict as Map
 import           Data.Monoid     (Endo(..))
-import           Data.Set        (Set)
-import qualified Data.Set as Set
-import           Linear.Matrix   (M33,(!*),identity)
+import           Linear.Matrix   ((!*),identity)
 import           Linear.V3
-import           System.Clock    (Clock(Monotonic),getTime,diffTimeSpec)
 
 type V = V3 Int
 type Shape = [V]
@@ -39,15 +36,8 @@ solve = go Map.empty 0 (range bds) where
         s <- map (v +) <$> shapes
         guard (all (inRange bds) s)
         guard (all (`Map.notMember` m) s)
-        let m' = foldl' (\m_ v -> Map.insert v i m_) m s
+        let m' = foldl' (\m_ v' -> Map.insert v' i m_) m s
         go m' (i+1) vs
 
 main :: IO ()
-main = do
-  start <- getTime Monotonic
-  print $ head solve
-  t1 <- getTime Monotonic
-  print $ diffTimeSpec t1 start -- 79s
-  print $ length solve
-  t2 <- getTime Monotonic
-  print $ diffTimeSpec t2 t1
+main =  print $ head solve
